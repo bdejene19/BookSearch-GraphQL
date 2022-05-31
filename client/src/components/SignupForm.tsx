@@ -1,16 +1,17 @@
-import React, { useState } from 'react';
+import React, { useState, FC } from 'react';
 import { Form, Button, Alert } from 'react-bootstrap';
 
-import { createUser } from '../utils/API';
-import Auth from '../utils/auth';
+import { createUser } from '../utils/API.ts';
+import Auth from '../utils/auth.ts';
+import { userform } from '../utils/customInterfaces.ts';
 
-const SignupForm = () => {
+const SignupForm: FC = () => {
   // set initial form state
-  const [userFormData, setUserFormData] = useState({ username: '', email: '', password: '' });
+  const [userFormData, setUserFormData] = useState<userform>({ username: '', email: '', password: '' });
   // set state for form validation
-  const [validated] = useState(false);
+  const [validated] = useState<boolean>(false);
   // set state for alert
-  const [showAlert, setShowAlert] = useState(false);
+  const [showAlert, setShowAlert] = useState<boolean>(false);
 
   const handleInputChange = (event) => {
     const { name, value } = event.target;

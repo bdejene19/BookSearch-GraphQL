@@ -1,12 +1,12 @@
-import React, { useState } from 'react';
+import React, { FC, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Navbar, Nav, Container, Modal, Tab } from 'react-bootstrap';
-import SignUpForm from './SignupForm';
-import LoginForm from './LoginForm';
+import SignUpForm from './SignupForm.tsx';
+import LoginForm from './LoginForm.tsx';
 
-import Auth from '../utils/auth';
+import Auth from '../utils/auth.ts';
 
-const AppNavbar = () => {
+const AppNavbar: FC = () => {
   // set modal display state
   const [showModal, setShowModal] = useState(false);
 
@@ -61,10 +61,10 @@ const AppNavbar = () => {
           <Modal.Body>
             <Tab.Content>
               <Tab.Pane eventKey='login'>
-                <LoginForm handleModalClose={() => setShowModal(false)} />
+                <LoginForm  />
               </Tab.Pane>
               <Tab.Pane eventKey='signup'>
-                <SignUpForm handleModalClose={() => setShowModal(false)} />
+                <SignUpForm />
               </Tab.Pane>
             </Tab.Content>
           </Modal.Body>

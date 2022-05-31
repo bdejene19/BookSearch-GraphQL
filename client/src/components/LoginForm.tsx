@@ -2,13 +2,14 @@
 import React, { useState } from 'react';
 import { Form, Button, Alert } from 'react-bootstrap';
 
-import { loginUser } from '../utils/API';
-import Auth from '../utils/auth';
+import { loginUser } from '../utils/API.ts';
+import { userlogin } from '../utils/customInterfaces';
+import Auth from '../utils/auth.ts';
 
 const LoginForm = () => {
-  const [userFormData, setUserFormData] = useState({ email: '', password: '' });
-  const [validated] = useState(false);
-  const [showAlert, setShowAlert] = useState(false);
+  const [userFormData, setUserFormData] = useState<userlogin>({ email: '', password: '' });
+  const [validated] = useState<boolean>(false);
+  const [showAlert, setShowAlert] = useState<boolean>(false);
 
   const handleInputChange = (event) => {
     const { name, value } = event.target;
@@ -41,7 +42,7 @@ const LoginForm = () => {
     }
 
     setUserFormData({
-      username: '',
+      // username: '',
       email: '',
       password: '',
     });
