@@ -1,5 +1,6 @@
 // route to get logged in user's info (needs the token)
-export const getMe = (token) => {
+import { userform, userlogin } from "./customInterfaces";
+export const getMe = (token: string): any => {
   return fetch('/api/users/me', {
     headers: {
       'Content-Type': 'application/json',
@@ -8,7 +9,7 @@ export const getMe = (token) => {
   });
 };
 
-export const createUser = (userData) => {
+export const createUser = (userData: userform) => {
   return fetch('/api/users', {
     method: 'POST',
     headers: {
@@ -18,7 +19,7 @@ export const createUser = (userData) => {
   });
 };
 
-export const loginUser = (userData) => {
+export const loginUser = (userData: userlogin) => {
   return fetch('/api/users/login', {
     method: 'POST',
     headers: {
@@ -29,7 +30,7 @@ export const loginUser = (userData) => {
 };
 
 // save book data for a logged in user
-export const saveBook = (bookData, token) => {
+export const saveBook = (bookData, token: string) => {
   return fetch('/api/users', {
     method: 'PUT',
     headers: {
@@ -41,7 +42,7 @@ export const saveBook = (bookData, token) => {
 };
 
 // remove saved book data for a logged in user
-export const deleteBook = (bookId, token) => {
+export const deleteBook = (bookId: string, token: string) => {
   return fetch(`/api/users/books/${bookId}`, {
     method: 'DELETE',
     headers: {
@@ -52,6 +53,6 @@ export const deleteBook = (bookId, token) => {
 
 // make a search to google books api
 // https://www.googleapis.com/books/v1/volumes?q=harry+potter
-export const searchGoogleBooks = (query) => {
+export const searchGoogleBooks = (query: string) => {
   return fetch(`https://www.googleapis.com/books/v1/volumes?q=${query}`);
 };
