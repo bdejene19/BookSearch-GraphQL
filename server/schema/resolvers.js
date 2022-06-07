@@ -42,18 +42,18 @@ const resolvers = {
       return { token, newUser };
     },
 
-    saveBook: async (parents, { bookContent }, context) => {
-      const user = await User.findOneAndUpdate(
-        { _id: context._id },
-        { $addToSet: { savedBooks: bookContent } }
-      ).catcher((err) => err);
+    // saveBook: async (parents, { bookContent }, context) => {
+    //   const user = await User.findOneAndUpdate(
+    //     { _id: context._id },
+    //     { $addToSet: { savedBooks: bookContent } }
+    //   ).catcher((err) => err);
 
-      if (!user) {
-        return new Error("Book could not be saved to user in database");
-      } else {
-        return user;
-      }
-    },
+    //   if (!user) {
+    //     return new Error("Book could not be saved to user in database");
+    //   } else {
+    //     return user;
+    //   }
+    // },
     removeBook: async (parents, { bookId }, context) => {
       const user = await User.findOneAndUpdate(
         { _id: context._id },
